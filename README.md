@@ -31,19 +31,8 @@ pip install pandas numpy matplotlib seaborn
 ```
 
 ## Usage
-git clone https://github.com/yourusername/agricultural-production-analysis.git
-cd agricultural-production-analysis
-
-
-1. Clone the repository:
-    ```bash
 git clone https://github.com/2022BCD0052/agriculture-crop-predection-using-ann-machineLearning.git
 cd agriculture-crop-predection-using-ann-machineLearning    ```
-
-2. Open the notebook:
-    ```bash
-    jupyter notebook agricultural-production.ipynb
-    ```
 
 3. Run the cells to execute the analysis.
 
