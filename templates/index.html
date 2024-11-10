@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpapers.com/images/featured/agriculture-pictures-ppsj59vfqlop02h9.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f7f7f7;
+        }
+
+        .form-container {
+            background: radial-gradient(circle, rgba(174,238,200,0.7103) 0%, rgba(219,233,148,0.3994) 100%);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4caf50;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+            transform: translateY(-3px);
+        }
+
+        .prediction-container {
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e8f5e9;
+        }
+
+        .prediction-container p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #388e3c;
+        }
+
+        .prediction-container .prediction {
+            font-size: 20px;
+            color: #388e3c;
+            font-weight: bold;
+            background-color: #a5d6a7;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Crop Prediction</h1>
+
+        <form action="/predict" method="POST">
+            <!-- Nitrogen Input -->
+            <div>
+                <label for="nitrogen">Nitrogen (N):</label>
+                <input type="text" name="nitrogen" id="nitrogen" required>
+            </div>
+
+            <!-- Phosphorous Input -->
+            <div>
+                <label for="phosphorous">Phosphorous (P):</label>
+                <input type="text" name="phosphorous" id="phosphorous" required>
+            </div>
+
+            <!-- Potassium Input -->
+            <div>
+                <label for="potassium">Potassium (K):</label>
+                <input type="text" name="potassium" id="potassium" required>
+            </div>
+
+            <!-- Average Temperature Input -->
+            <div>
+                <label for="avg_temp">Average Temperature:</label>
+                <input type="text" name="avg_temp" id="avg_temp" required>
+            </div>
+
+            <!-- Humidity Input -->
+            <div>
+                <label for="humidity">Humidity:</label>
+                <input type="text" name="humidity" id="humidity" required>
+            </div>
+
+            <!-- Soil pH Input -->
+            <div>
+                <label for="soil_ph">Soil pH:</label>
+                <input type="text" name="soil_ph" id="soil_ph" required>
+            </div>
+
+            <!-- Rainfall Input -->
+            <div>
+                <label for="rainfall">Rainfall:</label>
+                <input type="text" name="rainfall" id="rainfall" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Suggested Crop Display (Only shows if there is a prediction) -->
+        <div id="prediction-container" class="prediction-container" style="display: none;">
+            <p>Crop Suggested Based on Given Data</p>
+            <div id="prediction" class="prediction"></div>
+        </div>
+    </div>
+
+    <script>
+        // Example of showing the prediction after form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Example prediction data (in real use, this should come from the backend)
+            const prediction = 'Wheat';
+
+            // Show the prediction
+            const predictionContainer = document.getElementById('prediction-container');
+            const predictionElement = document.getElementById('prediction');
+            predictionElement.textContent = prediction;
+            predictionContainer.style.display = 'block';
+        });
+    </script>
+    
+</body>
+</html>

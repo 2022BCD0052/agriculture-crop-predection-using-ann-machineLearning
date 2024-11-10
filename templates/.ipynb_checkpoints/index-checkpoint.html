@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Custom CSS for animations */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-container {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #3a9a45 0%, #5cbf60 100%);
+        }
+
+        .submit-button {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            background-color: #318739;
+        }
+
+    </style>
+</head>
+<body class="bg-gradient-to-r from-gray-100 via-green-50 to-white flex justify-center items-center min-h-screen" style="background-image: url('https://wallpapers.com/images/featured/agriculture-pictures-ppsj59vfqlop02h9.jpg'); background-size: cover;">  
+
+    <div class="form-container z-100 shadow-lg  rounded-lg p-6 w-full max-w-4xl " style="background: radial-gradient(circle, rgba(174,238,200,0.7103) 0%, rgba(219,233,148,0.3994) 100%)">
+        <h1 class="text-3xl font-semibold text-green-700 text-center mb-6">Crop Prediction</h1>
+
+        <form action="/predict" method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Year Input -->
+            <!-- <div>
+                <label for="year" class="block text-gray-700 text-sm mb-2">Year:</label>
+                <input type="text" name="year" id="year" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out" required>
+            </div> -->
+
+            <!-- Nitrogen Input -->
+            <div>
+                <label for="nitrogen" class="block text-white font-semi-bold text-sm mb-2">Nitrogen (N):</label>
+                <input type="text" name="nitrogen" id="nitrogen" class="w-full p-3 border  border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500  transition duration-300 ease-in-out" required>
+            </div>
+
+            <!-- Phosphorous Input -->
+            <div>
+                <label for="phosphorous" class="block text-white font-semi-bold text-sm mb-2">Phosphorous (P):</label>
+                <input type="text" name="phosphorous" id="phosphorous" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out" required>
+            </div>
+
+            <!-- Potassium Input -->
+            <div>
+                <label for="potassium" class="block text-white font-semi-bold text-sm mb-2">Potassium (K):</label>
+                <input type="text" name="potassium" id="potassium" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out" required>
+            </div>
+
+            <!-- Average Temperature Input -->
+            <div>
+                <label for="avg_temp" class="block text-white font-semi-bold text-sm mb-2">Average Temperature:</label>
+                <input type="text" name="avg_temp" id="avg_temp" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out" required>
+            </div>
+
+            <!-- Humidity Input -->
+            <div>
+                <label for="humidity" class="block text-white font-semi-bold text-sm mb-2">Humidity:</label>
+                <input type="text" name="humidity" id="humidity" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out" required>
+            </div>
+
+            <!-- Soil pH Input -->
+            <div>
+                <label for="soil_ph" class="block text-white font-semi-bold text-sm mb-2">Soil pH:</label>
+                <input type="text" name="soil_ph" id="soil_ph" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out" required>
+            </div>
+
+            <!-- Rainfall Input -->
+            <div>
+                <label for="rainfall" class="block text-white font-semi-bold text-sm mb-2">Rainfall:</label>
+                <input type="text" name="rainfall" id="rainfall" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300 ease-in-out" required>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-span-2">
+                <button type="submit" class="w-full py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-500 transition duration-300 ease-in-out submit-button">
+                    Predict
+                </button>
+            </div>
+        </form>
+           <!-- Suggested Crop Display (Only shows if there is a prediction) -->
+           {% if prediction %}
+           <div class="flex items-center justify-center p-4 mt-6 border border-gray-300 rounded-md">
+               <div class="flex flex-col items-center">
+                   <p class="text-white font-bold text-xl mb-1">Crop Suggested Based on Given Data</p>
+                   <div class="text-green-700 w-full text-center capitalize border p-3 font-bold border-green-300 rounded-lg bg-green-100 text-xl mb-2">
+                       {{ prediction }}
+                   </div>
+               </div>
+           </div>
+           {% endif %}
+    
+    </div>
+
+</body>
+</html>
