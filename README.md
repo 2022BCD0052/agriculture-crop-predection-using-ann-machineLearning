@@ -34,7 +34,7 @@ pip install pandas numpy matplotlib seaborn
 
 1. Clone the repository:
     ```bash
-git clone https://github.com/2022BCD0052/agriculture-crop-predection-using-ann-machineLearning
+git clone https://github.com/2022BCD0052/agriculture-crop-predection-using-ann-machineLearning.git
 cd agriculture-crop-predection-using-ann-machineLearning    ```
 
 2. Open the notebook:
