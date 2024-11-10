@@ -31,6 +31,9 @@ pip install pandas numpy matplotlib seaborn
 ```
 
 ## Usage
+git clone https://github.com/yourusername/agricultural-production-analysis.git
+cd agricultural-production-analysis
+
 
 1. Clone the repository:
     ```bash
